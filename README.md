@@ -21,10 +21,9 @@ easy_install watchdog
 
 ## Installing
 
-1. Copy **./daemon/voror** into /etc/init.d/
-2. Copy **./voror** into /etc/voror/
+2. Copy **./voror** into /etc/init.d/
 3. Create **voror.conf** in /etc/voror/
-4. Add to your startup by running ```update-rc.d voror defaults```
+4. Add to your startup by running ```sudo update-rc.d voror defaults```
 
 ## Configuring
 
