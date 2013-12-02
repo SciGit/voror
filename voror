@@ -4,12 +4,22 @@ import sys
 import time
 import logging
 import os
+import signal
+import multiprocessing
 from watchdog.observers import Observer
 from watchdog.events import FileSystemEventHandler
 
-daemons = []
 TMP_DIR = "/tmp/voror"
 CONFIG_FILE = "/etc/voror/voror.conf"
+
+daemons = []
+
+stop_event = multiprocessing.Event()
+
+def stop(signum, frame):
+    stop_event.set()
+
+signal.signal(signal.SIGTERM, stop)
 
 class RestartEventHandler(FileSystemEventHandler):
     def handle_restart(self, event):
@@ -31,7 +41,7 @@ if __name__ == "__main__":
     observer.schedule(event_handler, TMP_DIR, recursive=True)
     observer.start()
 
-    try:
-        while True:
-            time.sleep(1)
+    while not stop_event.is_set():
+        time.sleep(3)
+
     observer.join()
