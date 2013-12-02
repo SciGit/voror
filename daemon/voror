@@ -14,7 +14,7 @@ DAEMON="/etc/voror/voror"
 APPDIR=/etc/voror
 
 start() {
-  start-stop-daemon --start --quiet --chuid $USER --pidfile $PIDFILE \
+  start-stop-daemon --background --start --quiet --chuid $USER --pidfile $PIDFILE \
     --exec $DAEMON
 }
 
