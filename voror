@@ -9,7 +9,7 @@ from watchdog.events import FileSystemEventHandler
 
 daemons = []
 TMP_DIR = "/tmp/voror"
-CONFIG_FILE = "voror.conf"
+CONFIG_FILE = "/etc/voror/voror.conf"
 
 class RestartEventHandler(FileSystemEventHandler):
     def handle_restart(self, event):

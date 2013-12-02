@@ -5,12 +5,26 @@ Voror is a daemon that watches other daemons and respawns them if a restart
 file is touched. This is useful for Capistrano deployments so that restarts
 require only touching a file.
 
+## Requirements
+
+Voror requires the **watchdog** Python module. To install it, if you're using
+Pip:
+
+```sh
+pip install watchdog
+```
+
+Or if you're using easy_install:
+```sh
+easy_install watchdog
+```
+
 ## Installing
 
 1. Copy **./daemon/voror** into /etc/init.d/
 2. Copy **./voror** into /etc/voror/
 3. Create **voror.conf** in /etc/voror/
-4. Add to your startup by running ```sh update-rc.d voror defaults```
+4. Add to your startup by running ```update-rc.d voror defaults```
 
 ## Configuring
 
